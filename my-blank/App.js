@@ -3,20 +3,14 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View , Button} from 'react-native';
 import React,{useState} from 'react';
 
-const Texto = ()=>{
+const Texto = ({style})=>{
   const [contenido, setContenido] = useState('Hola Mundo RNative');
   const actualizaTexto=()=>{setContenido('Estado actualizado del texto')};
   return(
-    <Text onPress={actualizaTexto}>{contenido}</Text>
+    <Text style={[styles.text, style]} onPress={actualizaTexto}>{contenido}</Text>
   )
 };
-const Boton = () =>{
-  const [texto,setTexto] = useState('Tlabaja');
-  const actualizaBoton= ()=>{setTexto('No tlabajes')};
-  return(
-    <Button title={texto} onPress={actualizaBoton} />
-  )
-}
+
 
 
 /*  Zona 2: Main */
@@ -24,10 +18,9 @@ const Boton = () =>{
 export default function App() {
   return (
     <View style={styles.container}>
-      <Texto>Hola</Texto> 
-      <Boton />
-      <Texto>Mundo</Texto>
-      <Texto>React Native</Texto>
+      <Texto style={styles.red}>Hola</Texto> 
+      <Texto style={styles.blue}>Mundo</Texto>
+      <Texto style={styles.green}>React Native</Texto>
       <StatusBar style="auto" />
     </View>
   );
@@ -38,7 +31,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
+    alignItems: 'baseline',
     justifyContent: 'center',
+    flexDirection: 'row',
   },
+  text:{
+    color: 'white',
+    fontSize: 27,
+    
+  },
+  red:{backgroundColor:'red'},
+  blue:{backgroundColor:'blue'},
+  green:{backgroundColor:'green'},
 });
