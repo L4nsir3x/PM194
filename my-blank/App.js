@@ -2,29 +2,33 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button, Switch } from 'react-native';
 
-/* Componente Texto */
-const Texto = ({ style }) => {
-  const [contenido, setContenido] = useState('Hola Mundo React');
-  const actualizarTexto = () => setContenido('Hola Mundo como estas');
+const Interruptor = () =>{
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
-  return (
-    <View style={{ margin: 10 }}>
-      <Text style={[styles.text, style]}>{contenido}</Text>
-      <Button title="Actualizar texto" onPress={actualizarTexto} color="orange" />
+  return(
+    <View style={styles.container}>
+      <Text style={styles.title}>
+        {isEnabled ? 'Activado' : 'Desactivado'}
+      </Text>
+      <Switch
+        trackColor={{ false: "#767577", true: "#81b0ff" }}
+        thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
+        onValueChange={toggleSwitch}
+        value={isEnabled}
+      />
+        
     </View>
-  );
-};
-
-// const [isEnabled, setIsEnabled] = useState(false);
-// const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+  )
+}
 
 /* Zona 2: Main */
 export default function App() {
   return (
     <View style={styles.container}>
-      <Texto style={styles.red} />
-      <Texto style={styles.green} />
-      <Texto style={styles.blue} />
+
+      <Interruptor />
+
     </View>
   );
 }
