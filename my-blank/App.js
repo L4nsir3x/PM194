@@ -1,51 +1,35 @@
 /* Zona 1: Importaciones */
 import React, { useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
+import { StyleSheet, Text, View, Button, Switch } from 'react-native';
 
 /* Componente Texto */
 const Texto = ({ style }) => {
-  const [children, setChildren] = useState('Hola Mundo Rnative');
-
-  const actualizarTexto = () => {
-    setChildren('Hola Mundo Rnative Actualizado');
-  };
+  const [contenido, setContenido] = useState('Hola Mundo React');
+  const actualizarTexto = () => setContenido('Hola Mundo como estas');
 
   return (
-    <Text style={[styles.text, style]} onPress={actualizarTexto}>
-      {children}
-    </Text>
+    <View style={{ margin: 10 }}>
+      <Text style={[styles.text, style]}>{contenido}</Text>
+      <Button title="Actualizar texto" onPress={actualizarTexto} color="orange" />
+    </View>
   );
 };
 
+// const [isEnabled, setIsEnabled] = useState(false);
+// const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+
 /* Zona 2: Main */
 export default function App() {
-  const [name, setName] = useState('');
-
-  const showAlert = () => {
-    if (name.trim() === '') {
-      window.alert('Por favor, introduce tu nombre antes de continuar.');
-    } else {
-      window.alert(`¡Hola! Bienvenido/a, ${name}`);
-    }
-  };
-
   return (
     <View style={styles.container}>
       <Texto style={styles.red} />
-      <StatusBar style="auto" />
-
-      <Text style={styles.title}>Introduce tu nombre:</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Escribe tu nombre"
-        value={name}
-        onChangeText={text => setName(text)}
-      />
-      <Button title="Mostrar alerta" onPress={showAlert} />
+      <Texto style={styles.green} />
+      <Texto style={styles.blue} />
     </View>
   );
 }
+
+/* Estilos */
 
 /* Estilos */
 const styles = StyleSheet.create({
