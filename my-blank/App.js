@@ -1,46 +1,93 @@
-/*  Zona 1: Importaciones */
+/* Zona 1: Importaciones */
+import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View , Button} from 'react-native';
-import React,{useState} from 'react';
+import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 
-const Texto = ({style})=>{
-  const [contenido, setContenido] = useState('Hola Mundo RNative');
-  const actualizaTexto=()=>{setContenido('Estado actualizado del texto')};
-  return(
-    <Text style={[styles.text, style]} onPress={actualizaTexto}>{contenido}</Text>
-  )
+/* Componente Texto */
+const Texto = ({ style }) => {
+  const [children, setChildren] = useState('Hola Mundo Rnative');
+
+  const actualizarTexto = () => {
+    setChildren('Hola Mundo Rnative Actualizado');
+  };
+
+  return (
+    <Text style={[styles.text, style]} onPress={actualizarTexto}>
+      {children}
+    </Text>
+  );
 };
 
-
-
-/*  Zona 2: Main */
-
+/* Zona 2: Main */
 export default function App() {
+  const [name, setName] = useState('');
+
+  const showAlert = () => {
+    if (name.trim() === '') {
+      window.alert('Por favor, introduce tu nombre antes de continuar.');
+    } else {
+      window.alert(`¡Hola! Bienvenido/a, ${name}`);
+    }
+  };
+
   return (
     <View style={styles.container}>
-      <Texto style={styles.red}>Hola</Texto> 
-      <Texto style={styles.blue}>Mundo</Texto>
-      <Texto style={styles.green}>React Native</Texto>
+      <Texto style={styles.red} />
       <StatusBar style="auto" />
+
+      <Text style={styles.title}>Introduce tu nombre:</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Escribe tu nombre"
+        value={name}
+        onChangeText={text => setName(text)}
+      />
+      <Button title="Mostrar alerta" onPress={showAlert} />
     </View>
   );
 }
 
-/*  Zona 3: Estilos del screen*/
+/* Estilos */
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'baseline',
+    alignItems: 'center',
     justifyContent: 'center',
-    flexDirection: 'row',
+    padding: 20,
   },
-  text:{
-    color: 'white',
+  text: {
+    color: '#fff',
     fontSize: 27,
-    
+    marginBottom: 10,
   },
-  red:{backgroundColor:'red'},
-  blue:{backgroundColor:'blue'},
-  green:{backgroundColor:'green'},
+  title: {
+    fontSize: 20,
+    marginBottom: 10,
+  },
+  input: {
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    paddingHorizontal: 10,
+    marginBottom: 20,
+    borderRadius: 5,
+    backgroundColor: 'white',
+    width: '100%',
+  },
+  red: {
+    backgroundColor: 'red',
+    padding: 10,
+    borderRadius: 5,
+  },
+  blue: {
+    backgroundColor: 'blue',
+    padding: 10,
+    borderRadius: 5,
+  },
+  green: {
+    backgroundColor: 'green',
+    padding: 10,
+    borderRadius: 5,
+  },
 });
