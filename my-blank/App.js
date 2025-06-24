@@ -1,81 +1,47 @@
-/* Zona 1: Importaciones */
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, Switch } from 'react-native';
+import * as SplashScreen from 'expo-splash-screen';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, View, Text, Image } from 'react-native';
 
-const Interruptor = () =>{
-  const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+SplashScreen.preventAutoHideAsync();
 
-  return(
-    <View style={styles.container}>
-      <Text style={styles.title}>
-        {isEnabled ? 'Activado' : 'Desactivado'}
-      </Text>
-      <Switch
-        trackColor={{ false: "#767577", true: "#81b0ff" }}
-        thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
-        onValueChange={toggleSwitch}
-        value={isEnabled}
-      />
-        
-    </View>
-  )
-}
-
-/* Zona 2: Main */
 export default function App() {
-  return (
-    <View style={styles.container}>
+  const [splash, setSplash] = useState(false);
 
-      <Interruptor />
+  useEffect(() => {
 
-    </View>
-  );
+    setTimeout(async () => {
+      setSplash(true);
+      await SplashScreen.hideAsync();
+    }, 2000);
+
+}, []);
+
 }
 
-/* Estilos */
+
+
 
 /* Estilos */
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+  },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.5)', // overlay semitransparente
     justifyContent: 'center',
-    padding: 20,
-  },
-  text: {
-    color: '#fff',
-    fontSize: 27,
-    marginBottom: 10,
+    alignItems: 'center',
   },
   title: {
-    fontSize: 20,
+    color: 'white',
+    fontSize: 32,
+    fontWeight: 'bold',
     marginBottom: 10,
   },
-  input: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    paddingHorizontal: 10,
-    marginBottom: 20,
-    borderRadius: 5,
-    backgroundColor: 'white',
-    width: '100%',
-  },
-  red: {
-    backgroundColor: 'red',
-    padding: 10,
-    borderRadius: 5,
-  },
-  blue: {
-    backgroundColor: 'blue',
-    padding: 10,
-    borderRadius: 5,
-  },
-  green: {
-    backgroundColor: 'green',
-    padding: 10,
-    borderRadius: 5,
-  },
+  subtitle: {
+    color: 'white',
+    fontSize: 18,
+  }
 });
