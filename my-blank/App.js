@@ -1,20 +1,40 @@
 import * as SplashScreen from 'expo-splash-screen';
 import React, { useEffect, useState } from 'react';
+import { ImageBackground } from 'react-native';
 import { StyleSheet, View, Text, Image } from 'react-native';
 
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
-  const [splash, setSplash] = useState(false);
+  const [appReady, setAppReady] = useState(false);
 
   useEffect(() => {
 
     setTimeout(async () => {
-      setSplash(true);
+      setAppReady(true);
       await SplashScreen.hideAsync();
     }, 2000);
 
 }, []);
+
+  return(
+    <ImageBackground 
+    source={require('./assets/sunset.jpg')}
+    style={styles.background}
+    resizeMode="cover">
+
+      <View style={styles.container}>
+        <Text style={styles.title}>Bienvenido a mi App</Text>
+        <Text style={styles.subtitle}>
+          {appReady ? 'Carga completa' : 'Cargando...'}
+        </Text>
+      </View>
+       
+
+    </ImageBackground>
+
+  );
+
 
 }
 

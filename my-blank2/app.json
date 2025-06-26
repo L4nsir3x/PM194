@@ -1,0 +1,32 @@
+{
+  "expo": {
+    "name": "my-blank2",
+    "slug": "my-blank2",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/sunset.jpg",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/sunset.jpg",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/sunset.jpg",
+        "backgroundColor": "#ffffff"
+      },
+      "edgeToEdgeEnabled": true
+    },
+    "web": {
+      "favicon": "./assets/sunset.jpg"
+    },
+    "plugins": [
+      "expo-splash-screen"]
+    
+  }
+}
