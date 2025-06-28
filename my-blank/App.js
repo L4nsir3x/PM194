@@ -1,44 +1,54 @@
-import * as SplashScreen from 'expo-splash-screen';
-import React, { useEffect, useState } from 'react';
-import { ImageBackground } from 'react-native';
-import { StyleSheet, View, Text, Image } from 'react-native';
-
-SplashScreen.preventAutoHideAsync();
+import React, {useState,useEffect} from "react";
+import { StyleSheet, View, Text, ImageBackground, ScrollView } from "react-native";
 
 export default function App() {
-  const [appReady, setAppReady] = useState(false);
-
-  useEffect(() => {
-
-    setTimeout(async () => {
-      setAppReady(true);
-      await SplashScreen.hideAsync();
-    }, 2000);
-
-}, []);
-
-  return(
-    <ImageBackground 
-    source={require('./assets/sunset.jpg')}
-    style={styles.background}
-    resizeMode="cover">
-
-      <View style={styles.container}>
-        <Text style={styles.title}>Bienvenido a mi App</Text>
-        <Text style={styles.subtitle}>
-          {appReady ? 'Carga completa' : 'Cargando...'}
-        </Text>
-      </View>
-       
-
-    </ImageBackground>
-
-  );
-
-
+  return (
+    <ScrollView contentContainerStyle={styles.background} 
+    showsVerticalScrollIndicator={false}
+    horizontal={true}>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+      <Text>Hola Mundo Chiva</Text>
+    </ScrollView>
+  )
 }
-
-
 
 
 /* Estilos */
@@ -47,6 +57,15 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  overlay:{
+    flex: 1,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+
   },
   container: {
     flex: 1,
