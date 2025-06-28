@@ -1,55 +1,41 @@
-import React, {useState,useEffect} from "react";
-import { StyleSheet, View, Text, ImageBackground, ScrollView } from "react-native";
+import { View, Text, ActivityIndicator, Button, StyleSheet } from "react-native";
+import React, { useState, useEffect } from "react";
 
 export default function App() {
-  return (
-    <ScrollView contentContainerStyle={styles.background} 
-    showsVerticalScrollIndicator={false}
-    horizontal={true}>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-      <Text>Hola Mundo Chiva</Text>
-    </ScrollView>
-  )
+  const [loading, setLoading] = useState(false);
+  const [mensaje, setMensaje] = useState('');
+
+const simularCarga = () => {
+  setLoading(true);
+  setMensaje('');
+  setTimeout(() =>{
+    setLoading(false);
+    setMensaje('Carga completada exitosamente');
+  }, 2000);
 }
 
+return(
+  <View style={styles.container}>
+    <Text style = {styles.title}>
+      Simular carga
+
+
+    </Text>
+
+    {loading ? (
+      <>
+      <ActivityIndicator size="large" color="#0000ff" />
+      <Text style = {styles.texto}>Cargando...</Text>
+      </>
+      ) : (
+        <>
+        <Button title="Iniciar Carga" onPress={simularCarga}></Button>
+        {mensaje ? <Text style={styles.texto}>{mensaje}</Text> : null}
+        </>)}
+
+  </View>
+)
+}
 
 /* Estilos */
 const styles = StyleSheet.create({
@@ -59,6 +45,11 @@ const styles = StyleSheet.create({
     height: '100%',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  texto: {
+    fontSize: 20,
+    color: 'black',
+    marginTop: 10,
   },
   overlay:{
     flex: 1,
